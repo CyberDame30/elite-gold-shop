@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elite Gold — Елітне золото з прозорою ціною</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-wrap">
+      <div class="logo">Elite<span>Gold</span></div>
+      <nav class="nav">
+        <a href="#about">Про нас</a>
+        <a href="#trust">Прозорість</a>
+        <a href="#contact">Контакти</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-wrap">
+        <h1>Елітне золото. Чесна ціна.</h1>
+        <p>Ми розкриваємо формулу ціни: котирування золота + робота майстра + маржа. Актуальність оновлень відображається на сторінці.</p>
+        <a class="btn" href="#about">Дізнатись більше</a>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container grid-2">
+        <div>
+          <h2>Про компанію</h2>
+          <p>Elite Gold — ювелірний дім, що поєднує естетику та прозорість. Ми використовуємо перевірені постачання та сертифікацію кожного виробу.</p>
+        </div>
+        <div class="card">
+          <h3>Наш підхід до ціни</h3>
+          <ul>
+            <li>Біржове котирування XAU → ціна за грам</li>
+            <li>Вага виробу та проба (585/750/999)</li>
+            <li>Робота майстра та маржа</li>
+            <li>Актуальність: «оновлено N хв тому»</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="trust" class="section muted">
+      <div class="container grid-3">
+        <div class="feature">
+          <h3>Сертифікація</h3>
+          <p>Кожен виріб має сертифікат відповідності та походження металу.</p>
+        </div>
+        <div class="feature">
+          <h3>Етичність</h3>
+          <p>Партнери дотримуються стандартів відповідального видобутку.</p>
+        </div>
+        <div class="feature">
+          <h3>Гарантія</h3>
+          <p>Обмін/повернення згідно з політикою протягом 14 днів.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container grid-2">
+        <div>
+          <h2>Контакти</h2>
+          <p>Email: info@elite-gold.example</p>
+          <p>Телефон: +380 (XX) XXX‑XX‑XX</p>
+          <p>Графік: Пн‑Пт 10:00–18:00</p>
+        </div>
+        <form class="card" onsubmit="event.preventDefault(); alert('Дякуємо! Ми з вами звʼяжемось.');">
+          <h3>Залиште заявку</h3>
+          <label>Імʼя <input type="text" required></label>
+          <label>Email <input type="email" required></label>
+          <button class="btn" type="submit">Відправити</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Elite Gold. Всі права захищено.</p>
+      <a href="#top">Вгору ↑</a>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
