@@ -1,0 +1,21 @@
+{
+  "name": "elite-gold-shop",
+  "version": "1.0.0",
+  "description": "Landing page and documentation for Elite Gold dynamic pricing jewelry shop",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "serve": "serve landing"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyberDame30/elite-gold-shop.git"
+  },
+  "author": "Elisabeth Rothar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "serve": "^14.2.1"
+  }
+}
+

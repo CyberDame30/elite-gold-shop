@@ -22,4 +22,4 @@ Elite Gold — Онлайн‑магазин з динамічним ціноу�
 
 Автор: Elisabeth Rothar
 Email: rotharelisabeth@gmail.com
-GitHub: https://github.com/YourUsername/elite-gold-shop
+GitHub: https://github.com/CyberDame30/elite-gold-shop
