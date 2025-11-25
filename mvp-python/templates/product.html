@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Create your product</h2>
+  <form method="post" class="product-options">
+    <label>Gold type
+      <select name="gold_type">
+        {% for g in gold_types %}<option>{{ g }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Color
+      <select name="color">
+        {% for c in colors %}<option>{{ c }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Carat
+      <select name="carat">
+        {% for c in carats %}<option>{{ c }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Purity
+      <select name="purity">
+        {% for p in purities %}<option>{{ p }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Gem
+      <select name="gem">
+        {% for g in gems %}<option>{{ g }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Quantity <input type="number" name="qty" value="1" min="1"></label>
+    <div><button class="btn">Add to cart</button></div>
+  </form>
+{% endblock %}

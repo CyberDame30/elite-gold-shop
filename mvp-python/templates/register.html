@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Welcome to Elite Gold MVP</h1>
+  <p>Quick demo: register → login → create a product (select gold type, color, carat, purity, gems) → add to cart → checkout.</p>
+  {% if not session.get('user_id') %}
+    <p><a class="btn" href="{{ url_for('register') }}">Register</a> or <a class="btn" href="{{ url_for('login') }}">Login</a></p>
+  {% endif %}
+{% endblock %}

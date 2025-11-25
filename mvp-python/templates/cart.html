@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Your cart</h2>
+  {% if not cart %}
+    <p>Cart is empty. <a href="{{ url_for('product') }}">Create product</a></p>
+  {% else %}
+    <ul class="cart-list">
+        {% for i in cart %}
+        <li class="cart-item">{{ i.qty }} × {{ i.desc }} — {{ i.price }}₴</li>
+        {% endfor %}
+    </ul>
+    <p class="cart-total">Загалом: {{ total }}₴</p>
+
+    <form method="post">
+      <button class="btn">Checkout</button>
+    </form>
+  {% endif %}
+{% endblock %}
