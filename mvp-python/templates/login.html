@@ -1,10 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
+
+<h2 class="form-title">Вхід</h2>
+
+<form method="POST" class="form-box">
     {{ form.hidden_tag() }}
-    <div><label>Email</label> {{ form.email() }}</div>
-    <div><label>Password</label> {{ form.password() }}</div>
-    <div>{{ form.submit(class="btn") }}</div>
-  </form>
+
+    <label>Email</label>
+    {{ form.email(class="input") }}
+
+    <label>Пароль</label>
+    {{ form.password(class="input") }}
+
+    {{ form.submit(class="btn-primary") }}
+</form>
+
 {% endblock %}
+

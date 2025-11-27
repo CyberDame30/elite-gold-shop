@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="title">Оформлення замовлення</h2>
+
+<div class="checkout-container">
+
+    <form method="POST" class="checkout-form">
+
+        <h3>1. Особисті дані</h3>
+
+        <label>ПІБ</label>
+        <input type="text" name="full_name" required placeholder="Ім'я та прізвище">
+
+        <label>Телефон</label>
+        <input type="text" name="phone" required placeholder="+380XXXXXXXXX">
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <h3>2. Доставка</h3>
+
+        <label>Місто</label>
+        <input type="text" name="city" required placeholder="Київ, Львів…">
+
+        <label>Адреса / Відділення пошти</label>
+        <input type="text" name="address" required placeholder="Нова Пошта №12 / Ваша адреса">
+
+        <label>Спосіб доставки</label>
+        <select name="delivery_method" required>
+            <option value="Nova Poshta">Нова Пошта</option>
+            <option value="UkrPoshta">Укрпошта</option>
+            <option value="Courier">Кур'єр</option>
+        </select>
+
+        <h3>3. Оплата</h3>
+
+        <label>Метод оплати</label>
+        <select name="payment_method" required>
+            <option value="Card Online">Карткою онлайн</option>
+            <option value="Card Courier">Карткою курʼєру</option>
+            <option value="Cash Courier">Готівкою при отриманні</option>
+        </select>
+
+        <h3>4. Коментар до замовлення</h3>
+        <textarea name="comment" placeholder="Додаткові побажання…"></textarea>
+
+        <h3>Ваше замовлення</h3>
+        <ul class="order-list">
+            {% for item in cart %}
+            <li>{{ item.desc }} — {{ item.qty }} шт × {{ item.price }}$</li>
+            {% endfor %}
+        </ul>
+
+        <p class="total">Загальна сума: <strong>{{ total }}$</strong></p>
+
+        <button type="submit" class="btn-primary">Підтвердити замовлення</button>
+
+    </form>
+</div>
+
+{% endblock %}

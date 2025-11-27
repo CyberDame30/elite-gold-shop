@@ -1,8 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Welcome to Elite Gold MVP</h1>
-  <p>Quick demo: register → login → create a product (select gold type, color, carat, purity, gems) → add to cart → checkout.</p>
-  {% if not session.get('user_id') %}
-    <p><a class="btn" href="{{ url_for('register') }}">Register</a> or <a class="btn" href="{{ url_for('login') }}">Login</a></p>
-  {% endif %}
+
+<h2 class="form-title">Створити акаунт</h2>
+
+<form method="POST" class="form-box">
+    {{ form.hidden_tag() }}
+
+    <label>Email</label>
+    {{ form.email(class="input") }}
+
+    <label>Пароль</label>
+    {{ form.password(class="input") }}
+
+    <label>Повторіть пароль</label>
+    {{ form.confirm_password(class="input") }}
+
+    {{ form.submit(class="btn-primary") }}
+
+    {% if message %}
+    <p class="error">{{ message }}</p>
+    {% endif %}
+</form>
+
 {% endblock %}
+

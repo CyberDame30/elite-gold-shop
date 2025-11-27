@@ -1,47 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Elite Gold — Ювелірний дім</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Elite Gold Jewelry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
-  <header class="header">
-    <div class="container header-wrap">
-      <a href="{{ url_for('index') }}" class="logo">Elite<span>Gold</span></a>
-      <nav class="nav">
-        {% if session.get('user_id') %}
-          <a href="{{ url_for('product') }}">Створити виріб</a>
-          <a href="{{ url_for('cart') }}">Кошик</a>
-          <a href="{{ url_for('account') }}">Акаунт</a>
-          <a href="{{ url_for('logout') }}" class="btn-outline">Вийти</a>
+
+<header>
+    <div class="logo">EliteGold</div>
+
+    <nav>
+        <a href="{{ url_for('index') }}">Головна</a>
+        <a href="{{ url_for('catalog') }}">Каталог</a>
+        <a href="{{ url_for('custom') }}">Конструктор</a>
+        {% if session.get("user_id") %}
+            <a href="{{ url_for('cart') }}">Кошик</a>
+            <a href="{{ url_for('account') }}">Акаунт</a>
+            {% if session.get('role') == 'admin' %}
+                <a href="{{ url_for('admin') }}">Адмін</a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}">Вийти</a>
         {% else %}
-          <a href="{{ url_for('login') }}">Вхід</a>
-          <a href="{{ url_for('register') }}" class="btn-outline">Реєстрація</a>
+            <a href="{{ url_for('login') }}">Увійти</a>
+            <a href="{{ url_for('register') }}">Реєстрація</a>
         {% endif %}
-      </nav>
-    </div>
-  </header>
+    </nav>
+</header>
 
-  <main class="container">
+<main>
     {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
+        {% if messages %}
         <div class="flash-container">
-          {% for category, msg in messages %}
-            <div class="flash {{ category }}">{{ msg }}</div>
-          {% endfor %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
         </div>
-      {% endif %}
+        {% endif %}
     {% endwith %}
-    {% block content %}{% endblock %}
-  </main>
 
-  <footer class="footer">
-    <div class="container">
-      <p>© 2025 Elite Gold. Вишуканість у кожній деталі.</p>
-    </div>
-  </footer>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>© 2025 EliteGold — ювелірні вироби преміум класу</p>
+</footer>
+
 </body>
 </html>
+

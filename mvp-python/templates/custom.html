@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Конструктор ювелірного виробу</h2>
+
+<form method="POST" class="form-box">
+
+    <label>Тип золота</label>
+    <select name="gold_type" class="input">
+        {% for g in gold_types %}
+        <option value="{{ g }}">{{ g }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Поверхня</label>
+    <select name="color" class="input">
+        {% for c in colors %}
+        <option value="{{ c }}">{{ c }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Карат</label>
+    <select name="carat" class="input">
+        {% for c in carats %}
+        <option value="{{ c }}">{{ c }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Проба</label>
+    <select name="purity" class="input">
+        {% for p in purities %}
+        <option value="{{ p }}">{{ p }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Камінь</label>
+    <select name="gem" class="input">
+        {% for g in gems %}
+        <option value="{{ g }}">{{ g }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Кількість</label>
+    <input type="number" class="input" name="qty" min="1" value="1">
+
+    <button class="btn-primary">У кошик</button>
+</form>
+
+{% endblock %}

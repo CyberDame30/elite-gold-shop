@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="title">Каталог товарів</h2>
+
+<div class="filters">
+    <form method="get">
+
+        <h3>Категорії</h3>
+        {% for value, label in categories %}
+        <label>
+            <input type="radio" name="category" value="{{ value }}">
+            {{ label }}
+        </label><br>
+        {% endfor %}
+
+        <h3>Тип золота</h3>
+        <select name="gold">
+            <option value="">Всі</option>
+            {% for g in gold_types %}
+            <option value="{{ g }}">{{ g }}</option>
+            {% endfor %}
+        </select>
+
+        <h3>Камінь</h3>
+        <select name="gem">
+            <option value="">Всі</option>
+            {% for g in gems %}
+            <option value="{{ g }}">{{ g }}</option>
+            {% endfor %}
+        </select>
+
+        <h3>Ціна</h3>
+        <input type="number" name="price_min" placeholder="Мін. ціна">
+        <input type="number" name="price_max" placeholder="Макс. ціна">
+
+        <button class="btn-primary">Застосувати</button>
+    </form>
+</div>
+
+<hr>
+
+<div class="catalog-grid">
+
+    {% for p in products %}
+    <div class="product-card">
+        <img src="{{ p.image }}" class="product-img">
+
+        <h3>{{ p.name }}</h3>
+        <p class="price">{{ p.price }}$</p>
+
+        <a class="btn-secondary" href="{{ url_for('product_card', product_id=p.id) }}">
+            Переглянути
+        </a>
+
+        <a class="btn-primary" href="{{ url_for('add_to_cart', product_id=p.id) }}">
+            До кошика
+        </a>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
+

@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>Account</h2>
-  <p>Email: {{ email }}</p>
-  <p>Role: {{ role }}</p>
-  <p><a href="{{ url_for('product') }}">Create product</a></p>
+
+<h2>Ваш акаунт</h2>
+
+<div class="info-box">
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Роль:</strong> {{ role }}</p>
+</div>
+
 {% endblock %}
+

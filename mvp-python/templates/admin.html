@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Адмін-панель</h2>
+
+<h3>Усі замовлення</h3>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Email користувача</th>
+        <th>Товари</th>
+        <th>Сума</th>
+    </tr>
+
+    {% for o in orders %}
+    <tr>
+        <td>{{ o.id }}</td>
+        <td>{{ o.email }}</td>
+        <td>{{ o.items }}</td>
+        <td>{{ o.total }}$</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4">Немає замовлень</td></tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+

@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Welcome to Elite Gold MVP</h1>
-  <p>Quick demo: register → login → create a product (select gold type, color, carat, purity, gems) → add to cart → checkout.</p>
-  {% if not session.get('user_id') %}
-    <p><a class="btn" href="{{ url_for('register') }}">Register</a> or <a class="btn" href="{{ url_for('login') }}">Login</a></p>
-  {% endif %}
+
+<section class="hero">
+    <h1>Преміальні ювелірні вироби</h1>
+    <p>Ексклюзивні каблучки, сережки та підвіски з найкращого золота</p>
+
+    <a class="btn-primary" href="{{ url_for('catalog') }}">Переглянути каталог</a>
+</section>
+
 {% endblock %}
+

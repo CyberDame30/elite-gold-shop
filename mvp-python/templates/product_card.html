@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="product-details">
+
+    <img src="{{ product.image }}" class="product-big-img">
+
+    <div class="product-info">
+        <h2>{{ product.name }}</h2>
+
+        <p>{{ product.desc }}</p>
+
+        <p><strong>Тип золота:</strong> {{ product.gold_type }}</p>
+        <p><strong>Камінь:</strong> {{ product.gem }}</p>
+        <p><strong>Категорія:</strong> {{ product.category }}</p>
+
+        <p class="price-big">{{ product.price }}$</p>
+
+        <a class="btn-primary" href="{{ url_for('add_to_cart', product_id=product.id) }}">
+            Додати до кошика
+        </a>
+
+        <a class="btn-secondary" href="{{ url_for('catalog') }}">Назад</a>
+    </div>
+</div>
+
+{% endblock %}
+

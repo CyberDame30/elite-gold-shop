@@ -1,12 +1,19 @@
-# auth.py — helpers for session-based auth (Flask-Login not required but simple session used)
 from functools import wraps
 from flask import session, redirect, url_for, flash
 
-def login_required(f):
-    @wraps(f)
-    def inner(*args, **kwargs):
-        if "user_id" not in session:
-            flash("Login required", "warning")
+
+def login_required(view_func):
+    """
+    Декоратор для захисту роутів:
+    користувач має бути залогінений.
+    """
+
+    @wraps(view_func)
+    def wrapped_view(*args, **kwargs):
+        if not session.get("user_id"):
+            flash("Спочатку увійдіть у систему", "warning")
             return redirect(url_for("login"))
-        return f(*args, **kwargs)
-    return inner
+        return view_func(*args, **kwargs)
+
+    return wrapped_view
+

@@ -1,33 +1,88 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>Create your product</h2>
-  <form method="post" class="product-options">
-    <label>Gold type
-      <select name="gold_type">
-        {% for g in gold_types %}<option>{{ g }}</option>{% endfor %}
-      </select>
-    </label>
-    <label>Color
-      <select name="color">
-        {% for c in colors %}<option>{{ c }}</option>{% endfor %}
-      </select>
-    </label>
-    <label>Carat
-      <select name="carat">
-        {% for c in carats %}<option>{{ c }}</option>{% endfor %}
-      </select>
-    </label>
-    <label>Purity
-      <select name="purity">
-        {% for p in purities %}<option>{{ p }}</option>{% endfor %}
-      </select>
-    </label>
-    <label>Gem
-      <select name="gem">
-        {% for g in gems %}<option>{{ g }}</option>{% endfor %}
-      </select>
-    </label>
-    <label>Quantity <input type="number" name="qty" value="1" min="1"></label>
-    <div><button class="btn">Add to cart</button></div>
-  </form>
+
+<h2 class="title">Створити ювелірний виріб</h2>
+
+<form method="POST" id="productForm">
+
+    <div class="grid">
+
+        <div class="card">
+            <label>Тип золота</label>
+            <select name="gold_type" required>
+                {% for g in gold_types %}
+                    <option value="{{ g }}">{{ g }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="card">
+            <label>Карат</label>
+            <select name="carat" id="caratSelect" required>
+                {% for c in carats %}
+                    <option value="{{ c }}">{{ c }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="card">
+            <label>Проба</label>
+            <select name="purity" required>
+                {% for p in purities %}
+                    <option value="{{ p }}">{{ p }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="card">
+            <label>Обробка</label>
+            <select name="color" required>
+                {% for c in colors %}
+                    <option value="{{ c }}">{{ c }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="card">
+            <label>Дорогоцінні камені</label>
+            <select name="gem" id="gemSelect">
+                {% for g in gems %}
+                    <option value="{{ g }}">{{ g }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="card">
+            <label>Кількість</label>
+            <input type="number" name="qty" value="1" min="1">
+        </div>
+
+    </div>
+
+    <div class="price-box">
+        <p>Орієнтовна ціна: <span id="pricePreview">0</span>$</p>
+    </div>
+
+    <button type="submit" class="btn-primary">Додати у кошик</button>
+
+</form>
+
+<script>
+const basePrices = { "9K": 100, "14K": 200, "18K": 350, "22K": 500 };
+const gemPrices = { "None": 0, "Diamond": 800, "Sapphire": 200, "Emerald": 250, "Ruby": 300 };
+
+function updatePrice() {
+    let carat = document.getElementById("caratSelect").value;
+    let gem = document.getElementById("gemSelect").value;
+
+    let price = basePrices[carat] + gemPrices[gem];
+    document.getElementById("pricePreview").innerText = price;
+}
+
+updatePrice();
+document.getElementById("caratSelect").onchange = updatePrice;
+document.getElementById("gemSelect").onchange = updatePrice;
+</script>
+
 {% endblock %}
+
